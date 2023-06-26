@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from inicio.forms import CrearAtletaFormulario, CrearEntrenadorFormulario, CrearCompetenciaFormulario
+from inicio.forms import CrearAtletaFormulario, CrearEntrenadorFormulario, CrearCompetenciaFormulario,  BuscarAtletaFormulario
 from inicio.models import Atleta, Entrenador, Competencia
 
 # Create your views here.
@@ -8,7 +8,7 @@ def inicio(request):
     return render(request, 'inicio/inicio.html')
 
 def crear_atleta(request):
-    mensaje = ''
+    # mensaje = ''
     
     if request.method == 'POST':
         formulario = CrearAtletaFormulario(request.POST)
@@ -16,12 +16,13 @@ def crear_atleta(request):
             info = formulario.cleaned_data
             atleta = Atleta(nombre= info['nombre'],edad= info['edad'],deporte= info['deporte'],)
             atleta.save()
-            mensaje = f'Se ha creado el atleta {atleta.nombre}' 
+            return render(request, 'inicio/listar_atletas.html')
+            # mensaje = f'Se ha creado el atleta {atleta.nombre}' 
         else:
             return render(request, 'inicio/crear_atleta.html', {"formulario":formulario})
         
     formulario = CrearAtletaFormulario()
-    return render(request, 'inicio/crear_atleta.html', {"formulario":formulario, 'mensaje': mensaje})
+    return render(request, 'inicio/crear_atleta.html', {"formulario":formulario})
     
     
 def crear_entrenador(request):
@@ -59,4 +60,17 @@ def crear_competencia(request):
         
     formulario = CrearCompetenciaFormulario()
     return render(request, 'inicio/crear_competencia.html', {"formulario":formulario, 'mensaje': mensaje})
+
+def listar_atletas(request):
+    formulario = BuscarAtletaFormulario(request.GET)
+    listado_de_atletas = None
+    nombre_a_buscar = None
     
+    
+    if formulario.is_valid():
+        nombre_a_buscar = formulario.cleaned_data['nombre']
+        listado_de_atletas = Atleta.objects.filter(nombre__icontains= nombre_a_buscar)
+
+        
+    formulario = BuscarAtletaFormulario()
+    return render(request, 'inicio/listar_atletas.html', {"formulario":formulario, "atletas": listado_de_atletas, "nombre_a_buscar": nombre_a_buscar})

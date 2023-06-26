@@ -14,4 +14,6 @@ class CrearCompetenciaFormulario(forms.Form):
     nombre = forms.CharField(max_length=20)
     fecha = forms.DateField()
 
+class BuscarAtletaFormulario(forms.Form):
+    nombre = forms.CharField(max_length=20)
 

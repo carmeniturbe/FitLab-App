@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+<title>Atletas</title> 
+{% endblock title_head %}
+
+{% block h1_header %}
+Listado de Atletas
+{% endblock h1_header %}
+
+{% block contenido %}
+
+<p>{{mensaje}}</p>
+
+<form action="" method="get">
+  {{ formulario }}
+  <button>Buscar</button>
+</form>
+
+{% if perros %}
+{% for atleta in atletas %}
+  <li>Nombre: {{ atleta.nombre }} - Deporte: {{ atleta.deporte }}</li>
+{% endfor %}
+{% else %}
+<p>No se encontro atleta buscado</p>
+{% endif %}
+<button><a class="navbar-brand" href={% url 'inicio:crear_atleta' %}>Crear Atleta</a></button>
+
+{% endblock contenido %}
+
+
+

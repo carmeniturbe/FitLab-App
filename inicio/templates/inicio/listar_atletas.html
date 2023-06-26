@@ -13,17 +13,17 @@ Listado de Atletas
 <p>{{mensaje}}</p>
 
 <form action="" method="get">
-  {{ formulario }}
-  <button>Buscar</button>
-</form>
-
-{% if perros %}
-{% for atleta in atletas %}
-  <li>Nombre: {{ atleta.nombre }} - Deporte: {{ atleta.deporte }}</li>
-{% endfor %}
-{% else %}
-<p>No se encontro atleta buscado</p>
-{% endif %}
+    {{ formulario }}
+    <button>Buscar</button>
+  
+    {% if atletas %}
+      {% for atleta in atletas %}
+        <li>Nombre: {{ atleta.nombre }} - Deporte: {{ atleta.deporte }}</li>
+      {% endfor %}
+    {% else %}
+      <p>No se encontró el atleta buscado</p>
+    {% endif %}
+  </form>
 <button><a class="navbar-brand" href={% url 'inicio:crear_atleta' %}>Crear Atleta</a></button>
 
 {% endblock contenido %}

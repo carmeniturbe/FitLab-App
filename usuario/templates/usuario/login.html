@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title_head %}
-<title>Atletas</title> 
+<title>Login</title> 
 {% endblock title_head %}
 
 {% block h1_header %}
-Crear Atleta
+Login
 {% endblock h1_header %}
 
 {% block contenido %}
 
-<p>{{mensaje}}</p>
-<form action={% url 'inicio:detalle_atleta'%} method= "post">
+<form action= {% url 'usuario:login' %} method= "post">
     {% csrf_token %}
-<table>{{formulario}} </table> 
-<button>Crear</button>
+<table>
+    {{formulario}} 
+</table> 
+<button>Login</button>
 </form>
 {% endblock contenido %}

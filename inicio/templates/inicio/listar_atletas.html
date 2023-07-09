@@ -19,6 +19,12 @@ Listado de Atletas
     {% if atletas %}
       {% for atleta in atletas %}
         <li>Nombre: {{ atleta.nombre }} - Deporte: {{ atleta.deporte }}</li>
+        <li>
+          <a href = {%url 'inicio:detalle_atleta' atleta.id%}>{{atleta}}</a>
+          <button><a class="navbar-brand" href = {%url 'inicio:modificar_atleta' atleta.id%}>Modificar</a></button>
+          <button><a class="navbar-brand" href = {%url 'inicio:eliminar_atleta' atleta.id%}>Eliminar</a></button>
+          
+        </li>
       {% endfor %}
     {% else %}
       <p>No se encontró el atleta buscado</p>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+<title>Atleta</title> 
+{% endblock title_head %}
+
+{% block h1_header %}
+Datos del atleta {{atleta.nombre}}
+{% endblock h1_header %}
+
+{% block contenido %}
+<li>Edad: {{atleta.edad}} </li>
+<li>Deporte: {{atleta.deporte}} </li>
+{% endblock contenido %}

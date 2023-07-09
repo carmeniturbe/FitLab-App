@@ -5,12 +5,15 @@ from inicio.models import Atleta, Entrenador, Competencia
 from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
 def inicio(request):
     return render(request, 'inicio/inicio.html')
 
+@login_required
 def crear_atleta(request):
     # mensaje = ''
     
@@ -27,7 +30,8 @@ def crear_atleta(request):
         
     formulario = CrearAtletaFormulario()
     return render(request, 'inicio/crear_atleta.html', {"formulario":formulario})
-  
+
+@login_required
 def crear_entrenador(request):
 
     mensaje = ''
@@ -64,6 +68,7 @@ def crear_competencia(request):
     formulario = CrearCompetenciaFormulario()
     return render(request, 'inicio/crear_competencia.html', {"formulario":formulario, 'mensaje': mensaje})
 
+@login_required
 def listar_atletas(request):
     formulario = BuscarAtletaFormulario(request.GET)
     # listado_de_atletas = None
@@ -76,17 +81,17 @@ def listar_atletas(request):
     formulario = BuscarAtletaFormulario()
     return render(request, 'inicio/listar_atletas.html', {"formulario":formulario, "atletas": listado_de_atletas, "nombre_a_buscar": nombre_a_buscar})
 
-class DetalleAtleta(DetailView):
+class DetalleAtleta(LoginRequiredMixin, DetailView):
     model = Atleta
     template_name = "inicio/detalle_atleta.html"
 
-class ModificarAtleta(UpdateView):
+class ModificarAtleta(LoginRequiredMixin, UpdateView):
     model = Atleta
     fields = ['nombre', 'edad', 'deporte']
     template_name = "inicio/modificar_atleta.html"
     success_url = reverse_lazy('inicio:listar_atletas')
 
-class EliminarAtleta(DeleteView):
+class EliminarAtleta(LoginRequiredMixin, DeleteView):
     model = Atleta
     template_name = "inicio/eliminar_atleta.html"
     success_url = reverse_lazy('inicio:listar_atletas')

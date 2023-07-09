@@ -31,6 +31,7 @@
                 <a class="btn btn-secondary" href= {% url 'usuario:logout' %}>Logout</a>
                 {% else %}
                 <a class="btn btn-primary" href= {% url 'usuario:login' %}>Login</a>
+                <a class="btn btn-primary" href= {% url 'usuario:registrarse' %}>Registrarse</a>
                 {% endif %}
                 {% comment %} <a class="btn btn-primary" href={% url 'inicio:crear_competencia' %}>Crear Competencia</a> {% endcomment %}
             </div>

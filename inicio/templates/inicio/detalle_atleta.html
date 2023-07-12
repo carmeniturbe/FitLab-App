@@ -11,4 +11,5 @@ Datos del atleta {{atleta.nombre}}
 {% block contenido %}
 <li>Edad: {{atleta.edad}} </li>
 <li>Deporte: {{atleta.deporte}} </li>
+<li>Descripcion: {{atleta.descripcion | safe}} </li>
 {% endblock contenido %}

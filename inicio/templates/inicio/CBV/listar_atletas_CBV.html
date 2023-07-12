@@ -10,9 +10,8 @@ Listado de Atletas
 
 {% block contenido %}
 
-<p>{{mensaje}}</p>
 
-<form action="" method="get">
+ <form action="" method="get">
     {{ formulario }}
     <button>Buscar</button>
   
@@ -33,6 +32,3 @@ Listado de Atletas
 <button><a class="navbar-brand" href={% url 'inicio:crear_atleta' %}>Crear Atleta</a></button>
 
 {% endblock contenido %}
-
-
-

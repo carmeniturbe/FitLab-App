@@ -9,7 +9,7 @@ Editar perfil
 {% endblock h1_header %}
 
 {% block contenido %}
-<form action={% url 'usuario:editar_pefil' %} method= "post">
+<form action={% url 'usuario:editar_pefil' %} method= "post" enctype='multipart/form-data' >
 {% csrf_token %}
 <table>{{formulario}}</table>
 <button>Guardar cambios</button>

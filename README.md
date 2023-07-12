@@ -18,5 +18,7 @@ Este proyecto contiene las siguientes vistas para interactuar con los datos de a
 
 - **Listar Atletas:** Muestra una lista de atletas existentes y permite buscar atletas por nombre. Los resultados se filtran en función del nombre ingresado en el formulario de búsqueda.
 
+VIDEO: En este video se encuentra la demo del proyecto: https://drive.google.com/file/d/1KTHqP1a_AtjKhkRNrNnGjqwNVh0AUszU/view?usp=sharing
+
 Para obtener más detalles sobre la implementación de estas vistas, consulte los archivos de código fuente correspondientes.
 

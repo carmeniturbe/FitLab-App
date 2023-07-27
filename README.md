@@ -1,4 +1,4 @@
-# tercera-pre-entrega-iturbe
+# FitLab-App
 
 # Descripción del Proyecto
 

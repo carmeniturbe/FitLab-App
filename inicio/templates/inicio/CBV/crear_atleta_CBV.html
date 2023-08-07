@@ -10,12 +10,9 @@ Crear Atleta
 
 {% block contenido %}
 
-<form action={% url 'inicio:crear_atleta'%} method= "post">
+<form action="{% url 'inicio:crear_atleta' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-<table>
-    {{form}}
-    {{form.media}}
-</table> 
-<button>Crear</button>
+    {{ form.as_p }}
+    <button type="submit">Crear</button>
 </form>
 {% endblock contenido %}

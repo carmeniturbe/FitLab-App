@@ -31,6 +31,9 @@
                 <img src={{request.user.infoextra.avatar.url}} alt="" height='40px'>
                 {% endif %}
                 <a class="navbar-brand" href= {% url 'usuario:editar_pefil' %}>{{request.user.username}}</a>
+                {% if request.user.infoextra.hobbie %}
+                <a class="navbar-brand" href= {% url 'usuario:editar_pefil' %}>{{request.user.infoextra.hobbie}}</a>
+                {% endif %}
                 <a class="btn btn-secondary" href= {% url 'usuario:logout' %}>Logout</a>
                 {% else %}
                 <a class="btn btn-primary" href= {% url 'usuario:login' %}>Login</a>

@@ -12,4 +12,9 @@ Datos del atleta {{atleta.nombre}}
 <li>Edad: {{atleta.edad}} </li>
 <li>Deporte: {{atleta.deporte}} </li>
 <li>Descripcion: {{atleta.descripcion | safe}} </li>
+{% if atleta.imagen %}
+    <img src={{ atleta.imagen.url }} alt="Imagen" height='300px'>
+{% endif %}
+<li>Fecha de creacion: {{ atleta.fecha }}</li>
+<li>fecha de nacimiento: {{ atleta.fecha_nacimiento }} </li>
 {% endblock contenido %}

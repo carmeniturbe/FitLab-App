@@ -20,6 +20,7 @@ Listado de Atletas
         {% comment %} <li>Nombre: {{ atleta.nombre }} - Deporte: {{ atleta.deporte }}</li> {% endcomment %}
         <li>
           <a href = {%url 'inicio:detalle_atleta' atleta.id%}>{{atleta}}</a>
+          <button><a class="navbar-brand" href = {%url 'inicio:detalle_atleta' atleta.id%}>Detalle</a></button>
           <button><a class="navbar-brand" href = {%url 'inicio:modificar_atleta' atleta.id%}>Modificar</a></button>
           <button><a class="navbar-brand" href = {%url 'inicio:eliminar_atleta' atleta.id%}>Eliminar</a></button>
           

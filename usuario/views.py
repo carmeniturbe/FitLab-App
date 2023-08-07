@@ -47,10 +47,14 @@ def edicion_pefil(request):
         formulario = MiFormularioDeEdicionDeDatosDeUsuario(request.POST, request.FILES, instance=request.user)
         if formulario.is_valid():
             avatar = formulario.cleaned_data.get('avatar')
+            hobbie = formulario.cleaned_data.get('hobbie')
             if avatar:
                 info_extra_user.avatar = avatar
                 info_extra_user.save()
             formulario.save()
+            if hobbie:
+                info_extra_user.hobbie = hobbie
+                info_extra_user.save()
             return redirect('inicio:inicio')
     else:
         formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar':info_extra_user.avatar}, instance=request.user)

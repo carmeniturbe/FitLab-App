@@ -17,24 +17,6 @@ from django.views.generic.list import ListView
 def inicio(request):
     return render(request, 'inicio/inicio.html')
 
-# @login_required
-# def crear_atleta(request):
-#     # mensaje = ''
-    
-#     if request.method == 'POST':
-#         formulario = CrearAtletaFormulario(request.POST)
-#         if formulario.is_valid():
-#             info = formulario.cleaned_data
-#             atleta = Atleta(nombre= info['nombre'],edad= info['edad'],deporte= info['deporte'],)
-#             atleta.save()
-#             return render(request, 'inicio/listar_atletas.html')
-#             # mensaje = f'Se ha creado el atleta {atleta.nombre}' 
-#         else:
-#             return render(request, 'inicio/crear_atleta.html', {"formulario":formulario})
-        
-    formulario = CrearAtletaFormulario()
-    return render(request, 'inicio/crear_atleta.html', {"formulario":formulario})
-
 @login_required
 def crear_entrenador(request):
 
@@ -91,7 +73,7 @@ class DetalleAtleta(LoginRequiredMixin, DetailView):
 
 class ModificarAtleta(LoginRequiredMixin, UpdateView):
     model = Atleta
-    fields = ['nombre', 'edad', 'deporte', 'descripcion']
+    fields = ['nombre', 'edad', 'deporte', 'descripcion', 'imagen', 'fecha_nacimiento',]
     template_name = "inicio/modificar_atleta.html"
     success_url = reverse_lazy('inicio:listar_atletas')
 
@@ -106,7 +88,7 @@ def about_us(request):
 class CrearAtleta(CreateView):
     model = Atleta
     template_name = 'inicio/CBV/crear_atleta_CBV.html'
-    fields = ['nombre', 'edad', 'deporte', 'descripcion']
+    fields = ['nombre', 'edad', 'deporte', 'descripcion', 'imagen', 'fecha_nacimiento',]
     success_url = reverse_lazy('inicio:listar_atletas')
     
 
